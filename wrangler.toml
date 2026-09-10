@@ -1,0 +1,12 @@
+name = "youngnest"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-10"
+
+[vars]
+PUBLIC_TURNSTILE_SITE_KEY = "0x4AAAAAAEvM7G0Q-FFytnRp"
+
+[[d1_databases]]
+binding = "ENQUIRIES_DB"
+database_name = "youngnest-enquiries"
+database_id = "c8931aca-72e7-4b3e-91d4-557b51617600"
+migrations_dir = "migrations"

@@ -1,4 +1,4 @@
-import { gallery, property } from '../data/home';
+import { gallery } from '../data/home';
 import { submitEnquiry, type EnquiryPayload } from './enquiry';
 
 function track(name: string, details: Record<string, string> = {}) {
@@ -116,11 +116,19 @@ lightboxImage.addEventListener('touchend', event => {
 }, { passive: true });
 
 const form = document.querySelector<HTMLFormElement>('#enquiry-form')!;
+const turnstileContainer = document.querySelector<HTMLElement>('.cf-turnstile');
+if (turnstileContainer) {
+  const turnstileScript = document.createElement('script');
+  turnstileScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+  turnstileScript.async = true;
+  turnstileScript.defer = true;
+  document.head.append(turnstileScript);
+}
 const formResult = document.querySelector<HTMLElement>('#form-result')!;
 const errorSummary = document.querySelector<HTMLElement>('.form-error-summary')!;
 const submitButton = document.querySelector<HTMLButtonElement>('.form-submit')!;
-submitButton.disabled = false;
-const requiredFields = ['name', 'email'].map(id => document.getElementById(id) as HTMLInputElement | HTMLSelectElement);
+submitButton.disabled = !turnstileContainer;
+const requiredFields = ['name', 'email', 'privacy-consent'].map(id => document.getElementById(id) as HTMLInputElement | HTMLSelectElement);
 let started = false;
 form.addEventListener('input', () => {
   formResult.hidden = true;
@@ -130,7 +138,8 @@ form.addEventListener('change', () => { formResult.hidden = true; });
 
 function validateField(field: HTMLInputElement | HTMLSelectElement) {
   let message = '';
-  if (!field.value.trim()) message = field.id === 'name' ? 'Please enter your name.' : field.id === 'email' ? 'Please enter your email address.' : 'Please choose your move-in timing.';
+  if (field instanceof HTMLInputElement && field.type === 'checkbox' && !field.checked) message = 'Please confirm that we may respond to your enquiry.';
+  else if (!field.value.trim()) message = field.id === 'name' ? 'Please enter your name.' : field.id === 'email' ? 'Please enter your email address.' : 'Please check this field.';
   else if (!field.validity.valid) message = field.id === 'email' ? 'Please enter a valid email address.' : 'Please check this value.';
   field.setAttribute('aria-invalid', message ? 'true' : 'false');
   document.getElementById(`${field.id}-error`)!.textContent = message;
@@ -157,25 +166,23 @@ form.addEventListener('submit', async event => {
   const payload: EnquiryPayload = {
     name: String(data.get('name')).trim(), email: String(data.get('email')).trim(), moveIn: String(data.get('moveIn')),
     stay: String(data.get('stay') || ''), message: String(data.get('message') || '').trim(), language: 'en',
+    privacyConsent: (document.getElementById('privacy-consent') as HTMLInputElement).checked,
+    turnstileToken: String(data.get('cf-turnstile-response') || ''), website: String(data.get('website') || ''),
   };
   submitButton.disabled = true;
   form.setAttribute('aria-busy', 'true');
   try {
     const result = await submitEnquiry(payload);
-    if (result.status !== 'preview') throw new Error('Live submission UI must be implemented alongside the backend.');
-    const timing = (document.getElementById('move-in') as HTMLSelectElement).selectedOptions[0].text;
-    const stay = (document.getElementById('stay') as HTMLSelectElement).selectedOptions[0].text;
-    const body = `Hello YoungNest,\n\nI’d like to enquire about a room.\n\nName: ${payload.name}\nEmail: ${payload.email}${payload.moveIn ? `\nPreferred move-in: ${timing}` : ''}${payload.stay ? `\nIntended stay: ${stay}` : ''}${payload.message ? `\n\n${payload.message}` : ''}\n\nThank you!`;
-    document.querySelector<HTMLAnchorElement>('#email-enquiry')!.href = `mailto:${property.email}?subject=${encodeURIComponent('Room enquiry — YoungNest Ottobrunn')}&body=${encodeURIComponent(body)}`;
+    document.querySelector<HTMLElement>('#enquiry-reference')!.textContent = result.reference;
     formResult.hidden = false;
     formResult.focus({ preventScroll: true });
     formResult.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'nearest' });
-    track('enquiry_preview_complete');
-  } catch {
-    errorSummary.textContent = 'The preview couldn’t be completed. Your details are still here. Please try again or contact us directly.';
+    track('enquiry_submit_complete');
+  } catch (error) {
+    errorSummary.textContent = error instanceof Error ? error.message : 'We couldn’t send your enquiry. Please try again or contact us directly.';
     errorSummary.hidden = false;
     errorSummary.focus();
-    track('enquiry_preview_error');
+    track('enquiry_submit_error');
   } finally {
     submitButton.disabled = false;
     form.removeAttribute('aria-busy');

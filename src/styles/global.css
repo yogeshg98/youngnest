@@ -200,7 +200,6 @@
   .form-card { background: #fffdfa; color: var(--navy); border-radius: 18px; padding: 32px; }
   .form-heading { display: flex; gap: 15px; justify-content: space-between; align-items: center; }
   .form-heading h3 { font-size: 24px; }
-  .preview-badge { padding: 4px 8px; background: #eaf0e8; color: var(--green); font-size: 9px; white-space: nowrap; border-radius: 5px; }
   .form-intro { font-size: 11px; color: var(--muted); margin-top: 13px; margin-bottom: 24px; line-height: 1.8; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
   .field { margin-bottom: 17px; display: flex; flex-direction: column; min-width: 0; }
@@ -216,6 +215,13 @@
   .field [aria-invalid='true'] { border-color: #b33337; }
   .field-error { font-size: 10px; color: #b33337; margin-top: 4px; }
   .field-error:empty { display: none; }
+  .consent-field { margin-top: 1px; }
+  .consent-field label { display: flex; align-items: flex-start; gap: 9px; font-weight: 400; line-height: 1.55; }
+  .consent-field a { text-decoration: underline; text-underline-offset: 3px; }
+  .consent-field input { width: 16px; min-width: 16px; min-height: 16px; margin: 2px 0 0; accent-color: var(--green); }
+  .honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .cf-turnstile { margin-bottom: 17px; }
+  .form-configuration-note { margin: 0 0 17px; padding: 10px; border: 1px solid #d5d9d2; border-radius: 8px; font-size: 11px; color: var(--muted); line-height: 1.6; }
   .form-error-summary { font-size: 12px; border: 1px solid #b33337; border-radius: 8px; padding: 10px; margin-bottom: 20px; color: #9b272a; }
   .form-note { font-size: 9px; color: var(--muted); margin-top: -4px; margin-bottom: 18px; }
   .form-submit { width: 100%; justify-content: space-between; font-size: 13px; }
@@ -226,6 +232,14 @@
   .form-result a { text-decoration: underline; text-underline-offset: 3px; }
   .noscript-note { font-size: 12px; margin-top: 15px; }
   .site-footer { padding-top: 47px; }
+  .legal-page { max-width: 800px; padding-block: 100px 80px; }
+  .legal-page h1 { margin-bottom: 10px; }
+  .legal-updated { color: var(--muted); font-size: 13px; }
+  .legal-lead { max-width: 630px; margin-top: 35px; font-size: 19px; line-height: 1.7; }
+  .legal-page section { padding-top: 36px; }
+  .legal-page section h2 { font-size: 24px; margin-bottom: 12px; }
+  .legal-page section p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-top: 10px; }
+  .legal-page a { text-decoration: underline; text-underline-offset: 3px; }
   .footer-main { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding-bottom: 37px; }
   .footer-main p { font-size: 13px; line-height: 1.6; }
   .footer-main > div > span { display: block; font-size: 11px; color: var(--muted); line-height: 1.8; }
@@ -443,7 +457,6 @@
     .form-card { padding: 23px 20px; }
     .form-heading { gap: 10px; }
     .form-heading h3 { font-size: 21px; }
-    .preview-badge { font-size: 8px; padding: 4px 6px; }
     .form-intro { font-size: 11px; margin-bottom: 22px; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .field label { font-size: 12px; }
@@ -456,6 +469,11 @@
     .form-result { padding: 13px; }
     .form-result h4 { font-size: 14px; }
     .form-result p { font-size: 12px; }
+    .legal-page { padding-block: 58px 45px; }
+    .legal-page h1 { font-size: 42px; }
+    .legal-lead { font-size: 17px; }
+    .legal-page section { padding-top: 29px; }
+    .legal-page section h2 { font-size: 22px; }
     .site-footer { padding-top: 35px; padding-bottom: 86px; }
     .footer-main { display: grid; grid-template-columns: 1fr 1fr; gap: 25px 12px; padding-bottom: 27px; }
     .footer-main .brand-name { font-size: 23px; }

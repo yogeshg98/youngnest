@@ -1,6 +1,6 @@
 # YoungNest Ottobrunn
 
-An English-only, responsive Astro homepage for YoungNest. The first version includes a new SVG brand mark, three generated illustrative images, responsive gallery/lightbox, a neighbourhood illustration with directions link, FAQs, mobile navigation, sticky enquiry action and a validated enquiry preview.
+An English-only, responsive Astro homepage for YoungNest. It includes a new SVG brand mark, three generated illustrative images, responsive gallery/lightbox, a neighbourhood illustration with directions link, FAQs, mobile navigation, sticky enquiry action and a D1-backed enquiry form.
 
 ## Run locally
 
@@ -40,11 +40,9 @@ Run `node scripts/optimize-images.mjs` after replacing an original PNG. Original
 
 ## Enquiry behavior
 
-This version has no database, CRM connection or backend endpoint. The form explicitly identifies itself as a preview. It validates name, email and preferred move-in timing, preserves input on errors and displays a preview completion state. The visitor can then open a prefilled email in their own mail application. The site never sends an email automatically.
+The form submits to the Cloudflare Pages Function at `/api/enquiries`. It validates name, email and consent in the browser, then the function validates the same data, checks a Cloudflare Turnstile token and writes the enquiry to D1 before returning a reference number. No personal information is stored in cookies, localStorage or sessionStorage.
 
-No personal information is stored in cookies, localStorage or sessionStorage. The browser holds the current form values in memory only. Client-side validation supports usability; a future server must perform its own validation.
-
-For the next phase, replace `submitEnquiry` with a request to a server endpoint. Persist in the database before returning an accepted reference, then deliver to the CRM. Implement the real success UI alongside that change; the current interface deliberately rejects an unexpected accepted response rather than presenting the preview as real delivery. Add server-side validation, spam handling, duplicate protection and appropriate privacy content during integration.
+Complete the one-time account setup in [cloudflare/README.md](cloudflare/README.md) before deploying this change. Until the Pages D1 binding and Turnstile variables are configured, the form shows a direct-contact fallback instead of implying that an enquiry has been stored.
 
 The move-in/stay selections express visitor preferences and do not assert available tenancy durations.
 
@@ -60,6 +58,6 @@ The move-in/stay selections express visitor preferences and do not assert availa
 
 ## Follow-up scope
 
-Database/CRM integration, German translations, CMS integration, hosting and production domain configuration remain deferred. Set final canonical/social URLs and sitemap when the domain is known. Supply the operator/legal/privacy content and confirm commercial/location claims before a public launch.
+The D1 enquiry store is ready for a future CRM. German translations, CMS integration, the back-office CRM, final privacy/legal content, canonical/social URLs and sitemap remain deferred.
 
 Browser review artifacts are saved under `output/playwright/`. See `VALIDATION.md` for the completed checks and their limits.

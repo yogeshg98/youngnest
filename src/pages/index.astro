@@ -52,10 +52,10 @@ const facts = [
         <div class="hero-copy">
           <p class="eyebrow"><span class="little-dot"></span> Your new home in Ottobrunn</p>
           <h1 id="hero-heading">More than a room.<br />A better <span class="underlined">everyday.<svg viewBox="0 0 350 18" fill="none" aria-hidden="true"><path d="M4 13C94 2 209 0 343 9" stroke="currentColor" stroke-width="6" stroke-linecap="round" /></svg></span></h1>
-          <p class="hero-description">Your own space. A friendly face. A place to land.<br class="desktop-break" /> Fully furnished rooms for international students<br class="desktop-break" /> and young professionals.</p>
+          <p class="hero-description">Your own space. A friendly face. A place to land.<br class="desktop-break" /> Fully furnished rooms for young professionals<br class="desktop-break" /> and students.</p>
           <p class="hero-price">Rooms from <strong>{price}</strong><span> / month</span></p>
           <div class="hero-actions"><a class="button" href="#enquire" data-cta="hero">Enquire now <Icon name="arrow" size={20} /></a><a class="text-link" href="#our-home">Explore the home <span aria-hidden="true">↓</span></a></div>
-          <p class="hero-footnote"><Icon name="pin" size={15} /> Ottobrunn, near Munich <span>·</span> Made for your next chapter</p>
+          <p class="hero-footnote"><Icon name="pin" size={15} /> Greater Munich (Ottobrunn) <span>·</span> Made for your next chapter</p>
         </div>
         <div class="hero-visual">
           <div class="hero-image-wrap">
@@ -84,25 +84,33 @@ const facts = [
       </div></section>
 
       <section class="container section location-section" id="location" aria-labelledby="location-heading">
-        <div class="location-copy"><p class="eyebrow">A good place to start</p><h2 id="location-heading">Close to the city.<br /><span class="muted-heading">Closer to calm.</span></h2><p class="section-description">Make Ottobrunn your home base. A leafy neighbourhood, everyday essentials and Munich within reach.</p>
-          <div class="location-facts"><div><span class="round-icon"><Icon name="train" /></span><div><h3>Munich, connected</h3><p>Explore your journey via Ottobrunn S-Bahn.</p></div></div><div><span class="round-icon"><Icon name="bag" /></span><div><h3>The everyday, nearby</h3><p>Shops, cafés and the things that make a place yours.</p></div></div><div><span class="round-icon"><Icon name="leaf" /></span><div><h3>A greener way to come home</h3><p>Step away from the rush of the city.</p></div></div></div>
+        <div class="location-copy"><p class="eyebrow">A good place to start</p><h2 id="location-heading">Close to the city.<br /><span class="muted-heading">Closer to calm.</span></h2><p class="section-description">A quieter place to come home to, with the everyday comforts that help a new neighbourhood feel like yours.</p>
+          <div class="location-facts"><div><span class="round-icon"><Icon name="train" /></span><div><h3>Your day, at your pace.</h3><p>Slow mornings at home. City plans when you feel like it.</p></div></div><div><span class="round-icon"><Icon name="bag" /></span><div><h3>Settle into your everyday.</h3><p>Find your favourite coffee, your usual shop and a routine that feels familiar.</p></div></div><div><span class="round-icon"><Icon name="leaf" /></span><div><h3>Room to breathe.</h3><p>Leafy streets and a calmer setting to unwind after a full day.</p></div></div></div>
           <a class="text-link" href={property.directions} target="_blank" rel="noopener noreferrer">Get directions <Icon name="diagonal" size={18} /></a>
         </div>
         <div class="neighbourhood-card">
-          <div class="neighbourhood-art" role="img" aria-label="Decorative neighbourhood illustration with a house, trees, shops and a train. Not a geographic map.">
+          <div class="neighbourhood-art" role="img" aria-label="Neighbourhood illustration: 3 minutes on foot from home to Ottobrunn S-Bahn and EDEKA or PENNY; cafés and restaurants within a 5-minute walk. Approximate walking times; not a geographic map.">
             <svg viewBox="0 0 600 450" fill="none" aria-hidden="true">
               <rect width="600" height="450" fill="#EBEEE4"/>
               <path d="M-40 130 640 390M-20 370 640 80" stroke="#DDE1D6" stroke-width="71"/><path d="M-40 130 640 390M-20 370 640 80" stroke="#FFF9F3" stroke-width="52"/>
-              <path d="m-40 130 680 260M-20 370 660-290" stroke="#D8D6CA" stroke-width="1.5" stroke-dasharray="8 10"/>
               <rect x="384" y="20" width="145" height="66" rx="15" transform="rotate(21 384 20)" fill="#D8DFCD"/><rect x="54" y="33" width="103" height="67" rx="12" transform="rotate(21 54 33)" fill="#D8DFCD"/><rect x="35" y="395" width="120" height="70" rx="12" transform="rotate(-24 35 395)" fill="#D8DFCD"/>
-              <g stroke="#75937B" stroke-width="3"><path d="M112 231v29M470 280v29M421 378v25M201 73v29"/></g>
-              <g fill="#ACC3A4"><circle cx="112" cy="215" r="24"/><circle cx="99" cy="231" r="18"/><circle cx="125" cy="229" r="20"/><circle cx="470" cy="269" r="25"/><circle cx="421" cy="367" r="22"/><circle cx="201" cy="59" r="23"/></g>
+              <g stroke="#75937B" stroke-width="3"><path d="M112 231v29M545 280v29M421 378v25M201 73v29"/></g>
+              <g fill="#ACC3A4"><circle cx="112" cy="215" r="24"/><circle cx="99" cy="231" r="18"/><circle cx="125" cy="229" r="20"/><circle cx="545" cy="269" r="25"/><circle cx="421" cy="367" r="22"/><circle cx="201" cy="59" r="23"/></g>
+              <!-- Routes share the road junction, with short entrance paths to each building. -->
+              <path d="M305 254V262L263 246M126 149V193.5L263 246L458 160V180M263 246L108 313.8V338" stroke="#75937B" stroke-width="2" stroke-dasharray="5 7" stroke-linecap="round" stroke-linejoin="round"/>
               <g transform="translate(244 156)"><ellipse cx="61" cy="95" rx="72" ry="14" fill="#BCC9B5"/><path d="M8 36 61-2l53 38v62H8Z" fill="#FFF9F3"/><path d="M-3 36 61-13l64 49" stroke="#FF5C5C" stroke-width="14" stroke-linejoin="round"/><path d="M48 60h26v38H48Z" fill="#2F5D50"/><path d="M22 48h15v18H22ZM85 48h15v18H85Z" fill="#D1E0D9"/><path d="M22 57h15M85 57h15" stroke="#FFF9F3" stroke-width="2"/></g>
               <g transform="translate(449 118)"><rect width="76" height="62" rx="6" fill="#FFF9F3"/><path d="M-5 15h86L70-4H6Z" fill="#E4BDA7"/><path d="M9 31h19v31H9Z" fill="#A8BCAF"/><path d="M40 29h25v18H40Z" fill="#A8BCAF"/></g>
+              <g transform="translate(94 95)"><rect width="65" height="54" rx="5" fill="#FFF9F3"/><path d="M-5 12h75L60-5H5Z" fill="#E4BDA7"/><path d="M22 25h20v12a7 7 0 0 1-7 7h-6a7 7 0 0 1-7-7V25ZM42 27h4a5 5 0 0 1 0 10h-4M27 17v3M35 17v3" stroke="#2F5D50" stroke-width="2" stroke-linecap="round"/></g>
               <g transform="translate(59 314)"><rect width="49" height="49" rx="13" fill="#2F5D50"/><text x="24" y="34" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#FFF9F3" text-anchor="middle">S</text></g>
-              <path d="m114 338 30-14" stroke="#2F5D50" stroke-width="2" stroke-dasharray="4 5"/>
             </svg>
-            <span class="map-label home-map-label">Your new home <span class="little-dot"></span></span><span class="map-label train-map-label">Ottobrunn S-Bahn</span><span class="map-label shops-map-label">Everyday essentials</span><span class="map-note">Neighbourhood illustration · not to scale</span>
+            <span class="map-label home-map-label">Your new home <span class="little-dot"></span></span>
+            <span class="map-label train-map-label"><strong>3 min walk</strong><span>Ottobrunn S-Bahn</span></span>
+            <span class="map-label shops-map-label"><strong>3 min walk</strong><span>EDEKA · PENNY</span><small>Everyday essentials</small></span>
+            <span class="map-label cafes-map-label"><strong>Within 5 min walk</strong><span>Cafés &amp; restaurants</span></span>
+            <span class="map-note">Illustration · not to scale · walking times approximate</span>
+          </div>
+          <div class="commute-strip" aria-label="Connections from Ottobrunn station">
+            <div><Icon name="train" size={20} /><p><strong>≈20 min by S-Bahn</strong><span>Munich city centre</span><small>Marienplatz · from Ottobrunn station</small></p></div>
           </div>
           <div class="address-card"><span class="round-icon"><Icon name="pin" /></span><div><strong>{property.address}</strong><span>{property.locality}</span></div><a href={property.directions} target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Open property address in Google Maps"><Icon name="diagonal" /></a></div>
         </div>

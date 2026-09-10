@@ -1,0 +1,141 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import Logo from '../components/Logo.astro';
+import { property, gallery, faqs } from '../data/home';
+const price = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(property.priceFrom);
+const facts = [
+  { icon: 'bed', title: 'Fully furnished', description: 'Less packing. More living.' },
+  { icon: 'train', title: 'Connected to Munich', description: 'Via Ottobrunn S-Bahn.' },
+  { icon: 'people', title: 'International at heart', description: 'New faces. Familiar feelings.' },
+  { icon: 'leaf', title: 'A little more green', description: 'A quieter place to call home.' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#FFF9F3" />
+    <meta name="description" content="Find your next chapter at YoungNest Ottobrunn. Furnished rooms from €799/month for international students and young professionals near Munich. Explore and enquire." />
+    <meta property="og:title" content="YoungNest Ottobrunn — Places to belong" />
+    <meta property="og:description" content="More than a room. A better everyday. Furnished rooms in Ottobrunn from €799/month." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/house-1600.webp" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href="/images/house-960.webp" imagesrcset="/images/house-640.webp 640w, /images/house-960.webp 960w, /images/house-1600.webp 1600w" imagesizes="(max-width: 760px) 100vw, 50vw" />
+    <title>YoungNest Ottobrunn — Your next chapter starts here</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="logo-link" aria-label="YoungNest home"><Logo /></a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="#our-home">Our home</a><a href="#location">Location</a><a href="#about">About</a><a href="#faq">FAQ</a>
+        </nav>
+        <a class="button button-small header-cta" href="#enquire" data-cta="header">Enquire now <Icon name="arrow" size={18} /></a>
+        <button class="menu-toggle icon-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><Icon name="menu" /></button>
+      </div>
+    </header>
+
+    <dialog id="mobile-menu" class="menu-dialog" aria-label="Main navigation">
+      <div class="menu-top"><Logo /><button class="icon-button" data-close-menu aria-label="Close menu"><Icon name="close" /></button></div>
+      <nav aria-label="Mobile navigation"><a href="#our-home">Our home <Icon name="diagonal" /></a><a href="#location">Location <Icon name="diagonal" /></a><a href="#about">About <Icon name="diagonal" /></a><a href="#faq">FAQ <Icon name="diagonal" /></a></nav>
+      <a class="button" href="#enquire" data-cta="mobile-menu">Enquire now <Icon name="arrow" /></a>
+      <p class="menu-signoff">Your new home in Ottobrunn.<br />Your next chapter starts here.</p>
+    </dialog>
+
+    <main id="main">
+      <section class="hero container" aria-labelledby="hero-heading">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="little-dot"></span> Your new home in Ottobrunn</p>
+          <h1 id="hero-heading">More than a room.<br />A better <span class="underlined">everyday.<svg viewBox="0 0 350 18" fill="none" aria-hidden="true"><path d="M4 13C94 2 209 0 343 9" stroke="currentColor" stroke-width="6" stroke-linecap="round" /></svg></span></h1>
+          <p class="hero-description">Your own space. A friendly face. A place to land.<br class="desktop-break" /> Fully furnished rooms for international students<br class="desktop-break" /> and young professionals.</p>
+          <p class="hero-price">Rooms from <strong>{price}</strong><span> / month</span></p>
+          <div class="hero-actions"><a class="button" href="#enquire" data-cta="hero">Enquire now <Icon name="arrow" size={20} /></a><a class="text-link" href="#our-home">Explore the home <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-footnote"><Icon name="pin" size={15} /> Ottobrunn, near Munich <span>·</span> Made for your next chapter</p>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image-wrap">
+            <img class="hero-image" src="/images/house-960.webp" srcset="/images/house-640.webp 640w, /images/house-960.webp 960w, /images/house-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 50vw" width="1536" height="1024" alt="Illustrative Bavarian-style home with timber cladding and a leafy garden." fetchpriority="high" />
+            <span class="image-note">Illustrative image</span>
+          </div>
+          <div class="photo-caption"><span class="caption-icon"><Icon name="home" size={23} /></span><span><strong>Hello, Ottobrunn.</strong><small>A little calmer. A little closer to home.</small></span></div>
+          <div class="hero-sticker" aria-hidden="true"><span>A fresh start.<br />A good place.</span><svg width="35" height="29" viewBox="0 0 35 29" fill="none"><path d="M5 6c9 12 21 12 27 0M13 1v3M24 1v3" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg></div>
+        </div>
+      </section>
+
+      <div class="proof-wrap"><div class="container proof-strip">{facts.map(fact => <div class="proof-item"><Icon name={fact.icon} size={26} /><div><strong>{fact.title}</strong><span>{fact.description}</span></div></div>)}</div></div>
+
+      <section class="section container home-section" id="our-home" aria-labelledby="home-heading">
+        <div class="section-heading"><div><p class="eyebrow">Make yourself at home</p><h2 id="home-heading">Room for you.<br /><span class="muted-heading">Space for life.</span></h2></div><div class="section-intro"><p>Slow mornings. Shared meals. A door you’re happy to open at the end of the day. That’s the feeling we’re here for.</p><button class="text-link gallery-open" data-gallery-index="0">Take a look around <Icon name="diagonal" size={18} /></button></div></div>
+        <div class="gallery-grid">{gallery.map((item, index) => <button class:list={['gallery-card', `gallery-${index}`, 'gallery-open']} data-gallery-index={index} aria-label={`View ${item.category.toLowerCase()} image`}><img src={`/images/${item.id}-960.webp`} srcset={`/images/${item.id}-640.webp 640w, /images/${item.id}-960.webp 960w`} sizes="(max-width: 760px) 100vw, 50vw" alt={item.alt} loading="lazy" width="1536" height="1024" /><span class="gallery-gradient"></span><span class="gallery-label"><span>{item.category}</span><strong>{item.title}</strong></span><span class="gallery-expand"><Icon name="expand" size={18} /></span></button>)}</div>
+        <div class="gallery-bottom"><span>Spaces to rest, connect and feel at home.</span><span>Images are illustrative, not actual property photographs.</span></div>
+      </section>
+
+      <section class="about-section" id="about" aria-labelledby="about-heading"><div class="container section">
+        <div class="about-heading"><p class="eyebrow">A place to belong</p><h2 id="about-heading">New city. New people.<br /><span class="underlined small-underline">Your kind of home.<svg viewBox="0 0 350 18" fill="none" aria-hidden="true"><path d="M4 13C94 2 209 0 343 9" stroke="currentColor" stroke-width="5" stroke-linecap="round" /></svg></span></h2><p>Moving somewhere new is a big step.<br />Feeling at home shouldn’t have to be.</p></div>
+        <div class="values-grid">
+          <article><div class="value-top"><span class="value-icon"><Icon name="bed" size={27} /></span><span class="value-number">01</span></div><h3>Arrive. Unpack. Exhale.</h3><p>A furnished room means you can spend less time setting up and more time settling into your new everyday.</p></article>
+          <article><div class="value-top"><span class="value-icon"><Icon name="people" size={27} /></span><span class="value-number">02</span></div><h3>Your space. Your people.</h3><p>Enjoy the comfort of your own room, with shared spaces for a coffee, a conversation or cooking something good.</p></article>
+          <article><div class="value-top"><span class="value-icon"><Icon name="leaf" size={27} /></span><span class="value-number">03</span></div><h3>Life, at a nicer pace.</h3><p>A green residential setting in Ottobrunn, with connections to Munich when work, study or the city calls.</p></article>
+        </div>
+      </div></section>
+
+      <section class="container section location-section" id="location" aria-labelledby="location-heading">
+        <div class="location-copy"><p class="eyebrow">A good place to start</p><h2 id="location-heading">Close to the city.<br /><span class="muted-heading">Closer to calm.</span></h2><p class="section-description">Make Ottobrunn your home base. A leafy neighbourhood, everyday essentials and Munich within reach.</p>
+          <div class="location-facts"><div><span class="round-icon"><Icon name="train" /></span><div><h3>Munich, connected</h3><p>Explore your journey via Ottobrunn S-Bahn.</p></div></div><div><span class="round-icon"><Icon name="bag" /></span><div><h3>The everyday, nearby</h3><p>Shops, cafés and the things that make a place yours.</p></div></div><div><span class="round-icon"><Icon name="leaf" /></span><div><h3>A greener way to come home</h3><p>Step away from the rush of the city.</p></div></div></div>
+          <a class="text-link" href={property.directions} target="_blank" rel="noopener noreferrer">Get directions <Icon name="diagonal" size={18} /></a>
+        </div>
+        <div class="neighbourhood-card">
+          <div class="neighbourhood-art" role="img" aria-label="Decorative neighbourhood illustration with a house, trees, shops and a train. Not a geographic map.">
+            <svg viewBox="0 0 600 450" fill="none" aria-hidden="true">
+              <rect width="600" height="450" fill="#EBEEE4"/>
+              <path d="M-40 130 640 390M-20 370 640 80" stroke="#DDE1D6" stroke-width="71"/><path d="M-40 130 640 390M-20 370 640 80" stroke="#FFF9F3" stroke-width="52"/>
+              <path d="m-40 130 680 260M-20 370 660-290" stroke="#D8D6CA" stroke-width="1.5" stroke-dasharray="8 10"/>
+              <rect x="384" y="20" width="145" height="66" rx="15" transform="rotate(21 384 20)" fill="#D8DFCD"/><rect x="54" y="33" width="103" height="67" rx="12" transform="rotate(21 54 33)" fill="#D8DFCD"/><rect x="35" y="395" width="120" height="70" rx="12" transform="rotate(-24 35 395)" fill="#D8DFCD"/>
+              <g stroke="#75937B" stroke-width="3"><path d="M112 231v29M470 280v29M421 378v25M201 73v29"/></g>
+              <g fill="#ACC3A4"><circle cx="112" cy="215" r="24"/><circle cx="99" cy="231" r="18"/><circle cx="125" cy="229" r="20"/><circle cx="470" cy="269" r="25"/><circle cx="421" cy="367" r="22"/><circle cx="201" cy="59" r="23"/></g>
+              <g transform="translate(244 156)"><ellipse cx="61" cy="95" rx="72" ry="14" fill="#BCC9B5"/><path d="M8 36 61-2l53 38v62H8Z" fill="#FFF9F3"/><path d="M-3 36 61-13l64 49" stroke="#FF5C5C" stroke-width="14" stroke-linejoin="round"/><path d="M48 60h26v38H48Z" fill="#2F5D50"/><path d="M22 48h15v18H22ZM85 48h15v18H85Z" fill="#D1E0D9"/><path d="M22 57h15M85 57h15" stroke="#FFF9F3" stroke-width="2"/></g>
+              <g transform="translate(449 118)"><rect width="76" height="62" rx="6" fill="#FFF9F3"/><path d="M-5 15h86L70-4H6Z" fill="#E4BDA7"/><path d="M9 31h19v31H9Z" fill="#A8BCAF"/><path d="M40 29h25v18H40Z" fill="#A8BCAF"/></g>
+              <g transform="translate(59 314)"><rect width="49" height="49" rx="13" fill="#2F5D50"/><text x="24" y="34" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#FFF9F3" text-anchor="middle">S</text></g>
+              <path d="m114 338 30-14" stroke="#2F5D50" stroke-width="2" stroke-dasharray="4 5"/>
+            </svg>
+            <span class="map-label home-map-label">Your new home <span class="little-dot"></span></span><span class="map-label train-map-label">Ottobrunn S-Bahn</span><span class="map-label shops-map-label">Everyday essentials</span><span class="map-note">Neighbourhood illustration · not to scale</span>
+          </div>
+          <div class="address-card"><span class="round-icon"><Icon name="pin" /></span><div><strong>{property.address}</strong><span>{property.locality}</span></div><a href={property.directions} target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Open property address in Google Maps"><Icon name="diagonal" /></a></div>
+        </div>
+      </section>
+
+      <section class="container audience-section" aria-labelledby="audience-heading"><div class="audience-title"><p class="eyebrow">For your next chapter</p><h2 id="audience-heading">Wherever you’re from.<br />Whatever comes next.</h2></div><div class="audience-items"><article><Icon name="book" size={30}/><div><h3>Here to study?</h3><p>A place to find your feet, focus on your studies and meet people along the way.</p></div></article><article><Icon name="case" size={29}/><div><h3>Here for a fresh start?</h3><p>Settle into a new job and a new routine, with a comfortable home to come back to.</p></div></article></div></section>
+
+      <section class="container section pricing-section" aria-labelledby="pricing-heading"><div class="pricing-card"><div><p class="eyebrow">A little less to figure out</p><h2 id="pricing-heading">Your next chapter.<br />Already furnished.</h2><p>A room of your own and space to share.<br />Tell us what you’re looking for. Let’s find your fit.</p><div class="pricing-tags"><span><Icon name="check" size={17}/> Fully furnished</span><span><Icon name="check" size={17}/> Shared living</span><span><Icon name="check" size={17}/> International-friendly</span></div></div><div class="price-panel"><span>Rooms from</span><div class="large-price">{price}<span> / month</span></div><a class="button" href="#enquire" data-cta="pricing">Let’s find your room <Icon name="arrow" size={20}/></a><p>Ask us for room options and a full cost breakdown.</p></div></div></section>
+
+      <section class="container faq-section" id="faq" aria-labelledby="faq-heading"><div><p class="eyebrow">A few things you might be wondering</p><h2 id="faq-heading">Good questions.<br /><span class="muted-heading">Clear answers.</span></h2><p>Something else on your mind?<br /><a class="text-link" href={`mailto:${property.email}`}>We’re here to help <Icon name="arrow" size={18}/></a></p></div><div class="faq-list">{faqs.map((faq, index) => <details class="faq-item"><summary><span><small>0{index + 1}</small>{faq.question}</span><Icon name="plus" size={20}/></summary><p>{faq.answer}</p></details>)}</div></section>
+
+      <section class="enquiry-section" id="enquire" aria-labelledby="enquiry-heading"><div class="container enquiry-grid"><div class="enquiry-copy"><p class="eyebrow">Let’s find your room</p><h2 id="enquiry-heading" tabindex="-1">A new chapter<br />starts with<br /><span>a simple hello.</span></h2><p>Tell us a little about yourself and your plans.<br />We’d love to help you feel at home.</p><div class="contact-options"><a href={`mailto:${property.email}`} data-contact="email"><Icon name="mail"/><span><small>Drop us a line</small>{property.email}</span><Icon name="diagonal" size={19}/></a><a href={property.whatsapp} target="_blank" rel="noopener noreferrer" data-contact="whatsapp"><Icon name="phone"/><span><small>Say hello on WhatsApp</small>{property.phone}</span><Icon name="diagonal" size={19}/></a></div><p class="enquiry-signoff">Good people. Good places.</p></div>
+        <div class="form-card"><div class="form-heading"><h3>Make your next move.</h3><span class="preview-badge">Form preview</span></div><p class="form-intro" id="form-preview-note">Try the form below. To enquire today, contact us by email or WhatsApp. This preview doesn’t send or store your details.</p>
+          <form id="enquiry-form" novalidate aria-describedby="form-preview-note">
+            <div class="form-error-summary" role="alert" tabindex="-1" hidden></div>
+            <div class="form-row"><div class="field"><label for="name">Your name <span aria-hidden="true">*</span></label><input id="name" name="name" autocomplete="name" placeholder="First and last name" required maxlength="120" aria-describedby="name-error"/><span class="field-error" id="name-error"></span></div><div class="field"><label for="email">Email address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254" aria-describedby="email-error"/><span class="field-error" id="email-error"></span></div></div>
+            <div class="form-row"><div class="field"><label for="move-in">When would you like to move in? <span aria-hidden="true">*</span></label><select id="move-in" name="moveIn" required aria-describedby="move-in-error"><option value="">Choose your timing</option><option value="as-soon-as-possible">As soon as possible</option><option value="within-1-month">Within a month</option><option value="within-3-months">In 1–3 months</option><option value="later">More than 3 months from now</option><option value="flexible">I’m flexible</option></select><span class="field-error" id="move-in-error"></span></div><div class="field"><label for="stay">How long are you thinking? <span class="optional">Optional</span></label><select id="stay" name="stay"><option value="">Select a length of stay</option><option value="under-6-months">Less than 6 months</option><option value="6-12-months">6–12 months</option><option value="over-12-months">More than 12 months</option><option value="unsure">Not sure yet</option></select></div></div>
+            <div class="field"><label for="message">Anything you’d like us to know? <span class="optional">Optional</span></label><textarea id="message" name="message" rows="3" maxlength="2000" placeholder="A little about you, your plans or any questions…"></textarea></div>
+            <p class="form-note">Fields marked * are required. Your preferred stay helps us understand your plans; it doesn’t confirm an available tenancy option.</p>
+            <button class="button form-submit" type="submit" disabled>Preview my enquiry <Icon name="arrow" size={20}/></button>
+            <div id="form-result" class="form-result" role="status" tabindex="-1" hidden><span class="round-icon"><Icon name="check"/></span><div><h4>Your enquiry is ready to review.</h4><p>This was a preview. Nothing has been sent or saved. <a id="email-enquiry" href={`mailto:${property.email}`}>Open your enquiry in email <span aria-hidden="true">↗</span></a> to contact the team.</p></div></div>
+          </form>
+          <noscript><p class="noscript-note">This form preview needs JavaScript. You can <a href={`mailto:${property.email}`}>email the YoungNest team</a> directly.</p></noscript>
+        </div>
+      </div></section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-main"><a href="#top" aria-label="YoungNest home"><Logo /></a><p>More than a room.<br />A better everyday.</p><div><span>{property.address}</span><span>{property.locality}</span></div><a class="text-link" href={`mailto:${property.email}`}>Say hello <Icon name="diagonal" size={18}/></a></div><div class="container footer-bottom"><span>© {new Date().getFullYear()} YoungNest. Places to belong.</span><span>Made for living. Made for you.</span><a href="#top">Back to top ↑</a></div></footer>
+
+    <div class="mobile-sticky" hidden><div><small>Rooms from</small><strong>{price}<span> / month</span></strong></div><a href="#enquire" class="button" data-cta="sticky">Enquire now <Icon name="arrow" size={18}/></a></div>
+
+    <dialog id="gallery-dialog" class="gallery-dialog" aria-labelledby="gallery-dialog-title"><div class="lightbox-top"><div><p class="eyebrow">A glimpse of the feeling</p><h2 id="gallery-dialog-title">Room to recharge</h2></div><button class="icon-button" data-close-gallery aria-label="Close gallery"><Icon name="close"/></button></div><div class="lightbox-image-wrap"><img id="lightbox-image" src="/images/bedroom-1600.webp" alt={gallery[0].alt} width="1536" height="1024"/><p class="lightbox-image-error" hidden>This image couldn’t load. Please try another image.</p></div><div class="lightbox-bottom"><p>Images are illustrative.<br /><span>Not actual property photographs.</span></p><div class="lightbox-controls"><button class="icon-button" data-gallery-prev aria-label="Previous image"><Icon name="arrow" class="flip"/></button><span class="gallery-counter" aria-live="polite">1 / 3</span><button class="icon-button" data-gallery-next aria-label="Next image"><Icon name="arrow"/></button></div></div></dialog>
+    <script src="../scripts/main.ts"></script>
+  </body>
+</html>

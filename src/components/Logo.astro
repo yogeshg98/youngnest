@@ -1,0 +1,8 @@
+---
+interface Props { light?: boolean; compact?: boolean }
+const { light = false, compact = false } = Astro.props;
+---
+<span class:list={['brand', { 'brand-light': light, 'brand-compact': compact }]}>
+  <svg class="brand-mark" width="43" height="48" viewBox="0 0 54 58" fill="none" aria-hidden="true"><path d="M3 23 27 5l24 18v30H3V23Z" fill="#FF5C5C"/><path d="M3 31c17 0 26 9 26 22H3V31Z" fill={light ? '#FFF9F3' : '#10212B'}/><path d="M51 25C34 25 22 36 22 53h29V25Z" fill="#2F5D50"/><path d="M3 31c17 0 26 9 26 22M51 25C34 25 22 36 22 53" stroke={light ? '#10212B' : '#FFF9F3'} stroke-width="3"/></svg>
+  <span class="brand-words"><span class="brand-name">YoungNest<span class="brand-dot">.</span></span><span class="brand-tagline">Places to belong</span></span>
+</span>

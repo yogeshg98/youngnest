@@ -120,7 +120,7 @@ const formResult = document.querySelector<HTMLElement>('#form-result')!;
 const errorSummary = document.querySelector<HTMLElement>('.form-error-summary')!;
 const submitButton = document.querySelector<HTMLButtonElement>('.form-submit')!;
 submitButton.disabled = false;
-const requiredFields = ['name', 'email', 'move-in'].map(id => document.getElementById(id) as HTMLInputElement | HTMLSelectElement);
+const requiredFields = ['name', 'email'].map(id => document.getElementById(id) as HTMLInputElement | HTMLSelectElement);
 let started = false;
 form.addEventListener('input', () => {
   formResult.hidden = true;
@@ -165,7 +165,7 @@ form.addEventListener('submit', async event => {
     if (result.status !== 'preview') throw new Error('Live submission UI must be implemented alongside the backend.');
     const timing = (document.getElementById('move-in') as HTMLSelectElement).selectedOptions[0].text;
     const stay = (document.getElementById('stay') as HTMLSelectElement).selectedOptions[0].text;
-    const body = `Hello YoungNest,\n\nI’d like to enquire about a room.\n\nName: ${payload.name}\nEmail: ${payload.email}\nPreferred move-in: ${timing}${payload.stay ? `\nIntended stay: ${stay}` : ''}${payload.message ? `\n\n${payload.message}` : ''}\n\nThank you!`;
+    const body = `Hello YoungNest,\n\nI’d like to enquire about a room.\n\nName: ${payload.name}\nEmail: ${payload.email}${payload.moveIn ? `\nPreferred move-in: ${timing}` : ''}${payload.stay ? `\nIntended stay: ${stay}` : ''}${payload.message ? `\n\n${payload.message}` : ''}\n\nThank you!`;
     document.querySelector<HTMLAnchorElement>('#email-enquiry')!.href = `mailto:${property.email}?subject=${encodeURIComponent('Room enquiry — YoungNest Ottobrunn')}&body=${encodeURIComponent(body)}`;
     formResult.hidden = false;
     formResult.focus({ preventScroll: true });

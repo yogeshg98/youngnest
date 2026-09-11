@@ -3,9 +3,9 @@ export const property = {
   priceFrom: 799,
   address: 'Mozartstraße 80',
   locality: '85521 Ottobrunn, Germany',
-  email: 'book.youngnest@gmail.com',
-  phone: '01522 2603242',
-  whatsapp: 'https://wa.me/4915222603242',
+  email: 'book@youngnest.de',
+  phone: '+49 155 67784867',
+  whatsapp: 'https://wa.me/4915567784867',
   directions: 'https://www.google.com/maps/search/?api=1&query=Mozartstra%C3%9Fe+80%2C+85521+Ottobrunn%2C+Germany',
 };
 

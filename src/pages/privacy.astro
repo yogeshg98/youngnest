@@ -2,6 +2,7 @@
 import '@fontsource-variable/inter';
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
+import { property } from '../data/home';
 ---
 <!doctype html>
 <html lang="en">
@@ -20,12 +21,12 @@ import Logo from '../components/Logo.astro';
       <p class="legal-updated">Last updated: 10 September 2026</p>
       <p class="legal-lead">This notice explains how YoungNest uses personal information when you contact us through this website.</p>
 
-      <section><h2>Who is responsible for your information?</h2><p>YoungNest is responsible for the information collected through this website. You can contact us at <a href="mailto:book.youngnest@gmail.com">book.youngnest@gmail.com</a>.</p><p>The final legal entity name and postal address will be added when YoungNest’s business details are finalised.</p></section>
+      <section><h2>Who is responsible for your information?</h2><p>YoungNest is responsible for the information collected through this website. You can contact us at <a href={`mailto:${property.email}`}>{property.email}</a>.</p><p>The final legal entity name and postal address will be added when YoungNest’s business details are finalised.</p></section>
       <section><h2>What we collect</h2><p>When you submit an enquiry, we collect your name, email address, preferred move-in timing, intended length of stay, and any message you choose to provide. We also process technical information needed to protect the form from automated misuse.</p></section>
       <section><h2>Why we use it</h2><p>We use your enquiry details to respond to your request, discuss room options, and take steps you ask us to take before a possible tenancy. We do not use enquiry details for unrelated marketing without a separate basis to do so.</p></section>
       <section><h2>Where it is stored</h2><p>The website, form endpoint, bot-protection check and enquiry database use Cloudflare services. Enquiries are stored in a Cloudflare D1 database. If YoungNest introduces a back-office CRM, authorised YoungNest staff will use it to manage the same enquiry and communicate with you.</p></section>
       <section><h2>How long we keep it</h2><p>We keep enquiry information only for as long as needed to respond to your request, manage a potential tenancy, meet legal obligations, or resolve a related issue. YoungNest will publish its formal retention schedule with its final business details.</p></section>
-      <section><h2>Your choices and rights</h2><p>Depending on applicable law, you may ask to access, correct, delete, restrict, or receive a copy of your personal information, or object to certain processing. To make a request, contact us at <a href="mailto:book.youngnest@gmail.com">book.youngnest@gmail.com</a>. You may also have the right to complain to a data-protection authority.</p></section>
+      <section><h2>Your choices and rights</h2><p>Depending on applicable law, you may ask to access, correct, delete, restrict, or receive a copy of your personal information, or object to certain processing. To make a request, contact us at <a href={`mailto:${property.email}`}>{property.email}</a>. You may also have the right to complain to a data-protection authority.</p></section>
       <section><h2>Changes to this notice</h2><p>We may update this policy when our services or data practices change. The date above shows when it was last updated.</p></section>
     </main>
     <footer class="site-footer"><div class="container footer-bottom"><span>© {new Date().getFullYear()} YoungNest. Places to belong.</span><a href="/">Back to home</a></div></footer>

@@ -4,6 +4,9 @@ import '../styles/global.css';
 import Icon from '../components/Icon.astro';
 import Logo from '../components/Logo.astro';
 import { property, gallery, faqs } from '../data/home';
+import { getCountries, getCountryCallingCode } from 'libphonenumber-js/min';
+const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+const phoneCountries = getCountries().map(code => ({ code, name: countryNames.of(code) || code, dial: getCountryCallingCode(code) })).sort((a, b) => a.name.localeCompare(b.name, 'en'));
 const price = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(property.priceFrom);
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 const facts = [
@@ -128,6 +131,16 @@ const facts = [
           <form id="enquiry-form" novalidate aria-describedby="form-preview-note">
             <div class="form-error-summary" role="alert" tabindex="-1" hidden></div>
             <div class="form-row"><div class="field"><label for="name">Your name <span aria-hidden="true">*</span></label><input id="name" name="name" autocomplete="name" placeholder="First and last name" required maxlength="120" aria-describedby="name-error"/><span class="field-error" id="name-error"></span></div><div class="field"><label for="email">Email address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254" aria-describedby="email-error"/><span class="field-error" id="email-error"></span></div></div>
+            <div class="field phone-field">
+              <label for="phone">Phone number <span class="optional">Optional</span></label>
+              <div class="phone-controls">
+                <select id="phone-country" name="phoneCountry" aria-label="Phone country code" autocomplete="tel-country-code">
+                  {phoneCountries.map(country => <option value={country.code} selected={country.code === 'DE'}>{country.name} (+{country.dial})</option>)}
+                </select>
+                <input id="phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="64" placeholder="Your phone number" aria-describedby="phone-error" />
+              </div>
+              <span class="field-error" id="phone-error"></span>
+            </div>
             <div class="form-row"><div class="field"><label for="move-in">When would you like to move in? <span class="optional">Optional</span></label><select id="move-in" name="moveIn" aria-describedby="move-in-error"><option value="">Choose your timing</option><option value="as-soon-as-possible">As soon as possible</option><option value="within-1-month">Within a month</option><option value="within-3-months">In 1–3 months</option><option value="later">More than 3 months from now</option><option value="flexible">I’m flexible</option></select><span class="field-error" id="move-in-error"></span></div><div class="field"><label for="stay">How long are you thinking? <span class="optional">Optional</span></label><select id="stay" name="stay"><option value="">Select a length of stay</option><option value="under-6-months">Less than 6 months</option><option value="6-12-months">6–12 months</option><option value="over-12-months">More than 12 months</option><option value="unsure">Not sure yet</option></select></div></div>
             <div class="field"><label for="message">Anything you’d like us to know? <span class="optional">Optional</span></label><textarea id="message" name="message" rows="3" maxlength="2000" placeholder="A little about you, your plans or any questions…"></textarea></div>
             <div class="field consent-field"><label><input id="privacy-consent" name="privacyConsent" type="checkbox" required aria-describedby="privacy-consent-error"/> <span>I agree that YoungNest may use my details to respond to this enquiry, as explained in the <a href="/privacy">Privacy Policy</a>.</span></label><span class="field-error" id="privacy-consent-error"></span></div>

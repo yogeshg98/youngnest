@@ -52,3 +52,16 @@ npx wrangler d1 execute youngnest-enquiries --remote --command="SELECT reference
 ```
 
 The function returns a reference such as `YN-1234ABCD` only after D1 confirms the insert. If D1 or Turnstile is unavailable, the site leaves the visitor's form values in place and shows a direct-contact fallback message.
+
+## Phone capture release
+
+Migration `0002_add_enquiry_phone.sql` adds a nullable `phone` column and retains
+existing enquiries. Apply committed migrations before deploying the phone-aware
+endpoint; the old endpoint continues to work with the added column. The new
+endpoint requires it even when the visitor leaves phone blank. Rollback can deploy
+the previous application while retaining the nullable column.
+
+After a production release is explicitly requested, apply migrations with
+`npx wrangler d1 migrations apply youngnest-enquiries --remote`, deploy, and verify
+an authorized enquiry with a phone and one without. Phone values must not appear
+in browser logs, analytics, or browser storage.

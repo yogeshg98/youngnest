@@ -29,3 +29,28 @@ Completed on 10 September 2026.
 Screenshots are under `output/playwright/`, including `desktop-final.png`, `mobile-final.png`, `mobile-hero-final.png`, `mobile-gallery.png`, `mobile-menu.png`, `mobile-form-errors.png`, `desktop-enquiry.png` and the viewport-specific screenshots.
 
 The lightbox image sizing was corrected after the first review and rechecked at 390px: the image renders at 318 × 212px without the previous blank bands.
+
+## Optional phone update — 14 September 2026
+
+- Production build passed with zero Astro/TypeScript errors, warnings, or hints.
+- Shared parsing checked with 14 cases: omitted/blank, German local mobile and
+  landline, international +/00 formats, UK local, Italian retained leading zero,
+  invalid text, short input, unsupported country, wrong type, and overlong input.
+- Endpoint exercised locally with mocked Turnstile and D1: legacy/blank phones
+  accepted as NULL, German/international phones normalized, invalid values rejected
+  before external verification or insertion, SQL placeholder/binding counts aligned.
+- Both SQL migrations applied in an in-memory SQLite database. An existing lead
+  retained NULL phone and a new lead stored its phone successfully.
+- Local production-build browser checks: Germany selected by default, country to
+  phone keyboard order, invalid input feedback, clearing an invalid phone restores
+  validity, UK country selection accepts UK local input. No console errors/warnings.
+- Responsive checks at 1440, 390, and 320px: no horizontal overflow. The phone
+  controls stack below 480px to keep the selected country and number readable.
+- Screenshots: `output/playwright/phone-controls-*.png` and
+  `output/playwright/phone-viewport-*.png`.
+
+Limits: no production deployment, remote migration, real Turnstile verification,
+or real enquiry submission was performed. Local static preview has no Turnstile
+site key, so submission remains disabled as designed. Endpoint tests use mocks;
+SQLite checks do not replace a deployed D1 verification. Phone checks establish
+possible format/length, not ownership or reachability.

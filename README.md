@@ -40,7 +40,7 @@ Run `node scripts/optimize-images.mjs` after replacing an original PNG. Original
 
 ## Enquiry behavior
 
-The form submits to the Cloudflare Pages Function at `/api/enquiries`. It validates name, email and consent in the browser, then the function validates the same data, checks a Cloudflare Turnstile token and writes the enquiry to D1 before returning a reference number. No personal information is stored in cookies, localStorage or sessionStorage.
+The form submits to the Cloudflare Pages Function at `/api/enquiries`. It validates name, email, optional phone number and consent in the browser, then the function validates the same data, checks a Cloudflare Turnstile token and writes the enquiry to D1 before returning a reference number. No personal information is stored in cookies, localStorage or sessionStorage.
 
 Complete the one-time account setup in [cloudflare/README.md](cloudflare/README.md) before deploying this change. Until the Pages D1 binding and Turnstile variables are configured, the form shows a direct-contact fallback instead of implying that an enquiry has been stored.
 
@@ -61,3 +61,12 @@ The move-in/stay selections express visitor preferences and do not assert availa
 The D1 enquiry store is ready for a future CRM. German translations, CMS integration, the back-office CRM, final privacy/legal content, canonical/social URLs and sitemap remain deferred.
 
 Browser review artifacts are saved under `output/playwright/`. See `VALIDATION.md` for the completed checks and their limits.
+
+## Optional enquiry phone
+
+The country selector defaults to Germany (+49); visitors may change it or paste
+an international number. Blank phones are accepted. Browser and server share
+phone parsing and possible-number length checks via `src/lib/phone.ts`; this does
+not verify ownership or reachability. Supplied numbers are stored in international
+E.164 format in the nullable `phone` column. Existing enquiries keep NULL.
+Apply migration `0002_add_enquiry_phone.sql` before releasing the updated endpoint.

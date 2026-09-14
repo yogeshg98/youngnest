@@ -1,3 +1,5 @@
+import { normalizePhone } from '../../src/lib/phone';
+
 interface D1PreparedStatement {
   bind(...values: unknown[]): { run(): Promise<unknown> };
 }
@@ -19,6 +21,7 @@ interface Context {
 type EnquiryInput = {
   name: string;
   email: string;
+  phone: string;
   moveIn: string;
   stay: string;
   message: string;
@@ -45,15 +48,16 @@ function parseInput(body: unknown): EnquiryInput | null {
   const value = body as Record<string, unknown>;
   const name = text(value.name, 120);
   const email = text(value.email, 254)?.toLowerCase();
+  const phone = normalizePhone(value.phone, value.phoneCountry ?? 'DE');
   const moveIn = text(value.moveIn ?? '', 40);
   const stay = text(value.stay ?? '', 40);
   const message = text(value.message ?? '', 2000);
   const turnstileToken = text(value.turnstileToken, 4096);
   const website = text(value.website, 120);
 
-  if (!name || !email || !emailPattern.test(email) || moveIn === null || stay === null || message === null || !turnstileToken || website === null) return null;
+  if (!name || !email || !emailPattern.test(email) || phone === null || moveIn === null || stay === null || message === null || !turnstileToken || website === null) return null;
   if (value.privacyConsent !== true || value.language !== 'en' || !moveInOptions.has(moveIn) || !stayOptions.has(stay)) return null;
-  return { name, email, moveIn, stay, message, language: 'en', privacyConsent: true, turnstileToken, website };
+  return { name, email, phone, moveIn, stay, message, language: 'en', privacyConsent: true, turnstileToken, website };
 }
 
 async function verifyTurnstile(request: Request, secret: string, token: string) {
@@ -91,9 +95,9 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
   const reference = `YN-${id.slice(0, 8).toUpperCase()}`;
   try {
     await env.ENQUIRIES_DB.prepare(
-      `INSERT INTO enquiries (id, reference, name, email, move_in, stay, message, language, source, status)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'website', 'new')`,
-    ).bind(id, reference, input.name, input.email, input.moveIn || null, input.stay || null, input.message || null, input.language).run();
+      `INSERT INTO enquiries (id, reference, name, email, phone, move_in, stay, message, language, source, status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'website', 'new')`,
+    ).bind(id, reference, input.name, input.email, input.phone || null, input.moveIn || null, input.stay || null, input.message || null, input.language).run();
     return json({ reference }, 201);
   } catch (error) {
     console.error('Unable to store enquiry', error);

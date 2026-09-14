@@ -1,3 +1,4 @@
+import { normalizePhone } from '../lib/phone';
 import { gallery } from '../data/home';
 import { submitEnquiry, type EnquiryPayload } from './enquiry';
 
@@ -128,7 +129,8 @@ const formResult = document.querySelector<HTMLElement>('#form-result')!;
 const errorSummary = document.querySelector<HTMLElement>('.form-error-summary')!;
 const submitButton = document.querySelector<HTMLButtonElement>('.form-submit')!;
 submitButton.disabled = !turnstileContainer;
-const requiredFields = ['name', 'email', 'privacy-consent'].map(id => document.getElementById(id) as HTMLInputElement | HTMLSelectElement);
+const phoneCountry = document.querySelector<HTMLSelectElement>('#phone-country')!;
+const validatedFields = ['name', 'email', 'phone', 'privacy-consent'].map(id => document.getElementById(id) as HTMLInputElement | HTMLSelectElement);
 let started = false;
 form.addEventListener('input', () => {
   formResult.hidden = true;
@@ -138,33 +140,42 @@ form.addEventListener('change', () => { formResult.hidden = true; });
 
 function validateField(field: HTMLInputElement | HTMLSelectElement) {
   let message = '';
-  if (field instanceof HTMLInputElement && field.type === 'checkbox' && !field.checked) message = 'Please confirm that we may respond to your enquiry.';
+  if (field.id === 'phone') {
+    if (normalizePhone(field.value, phoneCountry.value) === null) message = 'Please enter a valid phone number or leave this blank.';
+  }
+  else if (field instanceof HTMLInputElement && field.type === 'checkbox' && !field.checked) message = 'Please confirm that we may respond to your enquiry.';
   else if (!field.value.trim()) message = field.id === 'name' ? 'Please enter your name.' : field.id === 'email' ? 'Please enter your email address.' : 'Please check this field.';
   else if (!field.validity.valid) message = field.id === 'email' ? 'Please enter a valid email address.' : 'Please check this value.';
   field.setAttribute('aria-invalid', message ? 'true' : 'false');
   document.getElementById(`${field.id}-error`)!.textContent = message;
   return !message;
 }
-requiredFields.forEach(field => {
+validatedFields.forEach(field => {
   field.addEventListener('blur', () => { if (field.value || field.hasAttribute('aria-invalid')) validateField(field); });
   field.addEventListener('input', () => { if (field.getAttribute('aria-invalid') === 'true') validateField(field); });
   field.addEventListener('change', () => { if (field.hasAttribute('aria-invalid')) validateField(field); });
 });
 
+phoneCountry.addEventListener('change', () => {
+  const phone = document.querySelector<HTMLInputElement>('#phone')!;
+  if (phone.value || phone.hasAttribute('aria-invalid')) validateField(phone);
+});
+
 form.addEventListener('submit', async event => {
   event.preventDefault();
   formResult.hidden = true;
-  const valid = requiredFields.map(validateField).every(Boolean);
+  const valid = validatedFields.map(validateField).every(Boolean);
   if (!valid) {
     errorSummary.hidden = false;
     errorSummary.textContent = 'Please check the highlighted fields below.';
-    requiredFields.find(field => field.getAttribute('aria-invalid') === 'true')?.focus();
+    validatedFields.find(field => field.getAttribute('aria-invalid') === 'true')?.focus();
     return;
   }
   errorSummary.hidden = true;
   const data = new FormData(form);
   const payload: EnquiryPayload = {
     name: String(data.get('name')).trim(), email: String(data.get('email')).trim(), moveIn: String(data.get('moveIn')),
+    phone: String(data.get('phone') || '').trim(), phoneCountry: phoneCountry.value,
     stay: String(data.get('stay') || ''), message: String(data.get('message') || '').trim(), language: 'en',
     privacyConsent: (document.getElementById('privacy-consent') as HTMLInputElement).checked,
     turnstileToken: String(data.get('cf-turnstile-response') || ''), website: String(data.get('website') || ''),

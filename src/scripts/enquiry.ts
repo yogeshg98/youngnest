@@ -1,6 +1,8 @@
 export interface EnquiryPayload {
   name: string;
   email: string;
+  phone?: string;
+  phoneCountry?: string;
   moveIn: string;
   stay?: string;
   message?: string;

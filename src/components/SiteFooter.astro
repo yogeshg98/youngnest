@@ -1,0 +1,6 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { property } from '../data/home';
+---
+<footer class="site-footer"><div class="container footer-main"><a href="/" aria-label="YoungNest home"><Logo /></a><p>More than a room.<br />A better everyday.</p><div><span>{property.address}</span><span>{property.locality}</span></div><a class="text-link" href={`mailto:${property.email}`}>Say hello <Icon name="diagonal" size={18}/></a></div><div class="container footer-bottom"><span>© {new Date().getFullYear()} YoungNest. Places to belong.</span><a href="/privacy">Privacy Policy</a><a href="#top">Back to top ↑</a></div></footer>

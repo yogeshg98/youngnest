@@ -1,0 +1,12 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+---
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a href="/" class="logo-link" aria-label="YoungNest home"><Logo /></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="/#our-home">Our home</a><a href="/#location">Location</a><a href="/#about">About</a><a href="/en/questions">FAQ</a></nav>
+    <a class="button button-small header-cta" href="/#enquire">Enquire now <Icon name="arrow" size={18} /></a>
+    <a class="menu-toggle icon-button" href="/en/questions" aria-label="Browse frequently asked questions"><Icon name="menu" /></a>
+  </div>
+</header>

@@ -54,3 +54,19 @@ or real enquiry submission was performed. Local static preview has no Turnstile
 site key, so submission remains disabled as designed. Endpoint tests use mocks;
 SQLite checks do not replace a deployed D1 verification. Phone checks establish
 possible format/length, not ownership or reachability.
+
+## FAQ version one — 15 September 2026
+
+- Production `npm run build` passed with zero errors and generated the English FAQ
+  hub, six category pages, 51 static answers and `sitemap.xml`.
+- Static output inspection confirmed 51 rendered FAQ disclosures, self-canonical
+  FAQ URLs, FAQPage structured data on category pages, and the complete sitemap.
+- The browser-side search index is embedded in the hub output; it has no endpoint,
+  storage or analytics dependency. It supports approved aliases and links directly
+  to permanent answer fragments.
+
+Limits: local browser interaction and responsive visual checks could not be run in
+this environment because a local Astro server could not be reached after startup.
+Deep-link expansion, keyboard interaction and mobile layout remain to be checked
+in a browser before deployment. No production deployment, FAQ search logging, or
+German FAQ routes/content were added.

@@ -1,0 +1,8 @@
+---
+import Icon from './Icon.astro';
+import type { Faq } from '../data/faqs';
+const { questions, category } = Astro.props as { questions: Faq[]; category: string };
+---
+<div class="faq-list faq-page-list">
+  {questions.map((faq, index) => <details class="faq-item" id={faq.id} data-question-id={faq.id} data-category={category}><summary><span><small>{String(index + 1).padStart(2, '0')}</small>{faq.question}</span><Icon name="plus" size={20}/></summary><p>{faq.answer}</p></details>)}
+</div>

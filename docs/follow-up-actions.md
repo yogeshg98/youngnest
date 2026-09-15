@@ -17,6 +17,14 @@
    bookings, documents, modifications, and personalization. Booking rules remain
    undecided.
 
+6. Add FAQ search logging and editorial reporting: define privacy and retention,
+   persist search and no-result topics, review them weekly, and generate the
+   monthly popular-question row. This is intentionally outside FAQ version one.
+7. Publish German FAQ content: commission native-written German answers and the
+   different German question set, then add `/de/questions` routes, language-aware
+   search, a language switcher and reciprocal hreflang metadata. Do not publish
+   empty German pages.
+
 The proposed longer-term target is Next.js/Payload on Cloudflare Workers, subject
 to a compatibility prototype. Do not block phone capture or sales access on a
 public-site migration. The Pages architecture below is the earlier CRM proposal,

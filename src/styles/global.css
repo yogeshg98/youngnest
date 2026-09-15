@@ -170,6 +170,8 @@
   .large-price > span { font-size: 13px; letter-spacing: 0; font-weight: 400; }
   .price-panel .button { width: 100%; margin-top: 16px; }
   .pricing-card .price-panel > p { font-size: 10px !important; text-align: center; margin-top: 12px !important; max-width: 290px; }
+  .faq-inline { grid-column: 1 / -1; border-top: 1px solid #d8bfb5; padding-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; font-size: 14px; line-height: 1.65; }
+  .faq-inline a { grid-column: 1 / -1; font-size: 13px; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
   .faq-section { display: grid; grid-template-columns: 1fr 1.25fr; gap: 70px; padding-bottom: 100px; }
   .faq-section .eyebrow { font-size: 10px; margin-bottom: 17px; }
   .faq-section > div > p:last-child { font-size: 12px; color: var(--muted); margin-top: 25px; }
@@ -201,6 +203,8 @@
   .form-heading { display: flex; gap: 15px; justify-content: space-between; align-items: center; }
   .form-heading h3 { font-size: 24px; }
   .form-intro { font-size: 11px; color: var(--muted); margin-top: 13px; margin-bottom: 24px; line-height: 1.8; }
+  .form-faq-note { font-size: 12px; line-height: 1.65; padding: 12px; border: 1px solid #d5d9d2; border-radius: 8px; margin: -8px 0 18px; color: var(--muted); }
+  .form-faq-note a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
   .field { margin-bottom: 17px; display: flex; flex-direction: column; min-width: 0; }
   .field label { display: block; font-size: 10px; font-weight: 600; margin-bottom: 7px; }
@@ -242,6 +246,43 @@
   .legal-page section h2 { font-size: 24px; margin-bottom: 12px; }
   .legal-page section p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-top: 10px; }
   .legal-page a { text-decoration: underline; text-underline-offset: 3px; }
+  .faq-hub, .faq-page { max-width: 900px; padding-block: 84px; }
+  .faq-hub > h1, .faq-page > h1 { margin-bottom: 20px; }
+  .faq-lead { color: var(--muted); font-size: 18px; line-height: 1.75; max-width: 760px; }
+  .faq-search { margin-top: 42px; position: relative; }
+  .faq-search label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 9px; }
+  .faq-search-input { display: flex; align-items: center; gap: 10px; padding: 0 16px; border: 1px solid var(--line); background: #fffdfa; border-radius: 12px; min-height: 56px; }
+  .faq-search-input svg { color: var(--muted); flex: 0 0 auto; }
+  .faq-search-input input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--navy); font-size: 16px; }
+  .faq-search-results { position: absolute; z-index: 4; top: calc(100% + 8px); width: 100%; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fffdfa; box-shadow: 0 15px 30px #10212b1a; }
+  .faq-search-results > a { display: block; padding: 15px 17px; border-bottom: 1px solid var(--line); }
+  .faq-search-results > a:last-child { border: 0; }
+  .faq-search-results > a:hover, .faq-search-results > a[aria-selected='true'] { background: var(--peach); }
+  .faq-search-results strong, .faq-search-results span { display: block; }
+  .faq-result-category { color: var(--green); font-size: 11px; font-weight: 650; margin-bottom: 3px; }
+  .faq-search-results strong { font-size: 14px; }
+  .faq-search-results > a > span:last-child { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 3px; }
+  .faq-search-empty { padding: 18px; display: grid; gap: 5px; font-size: 14px; }
+  .faq-search-empty span { color: var(--muted); font-size: 13px; }
+  .faq-search-empty a { color: var(--green); font-size: 13px; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+  .faq-categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 35px; }
+  .faq-category-card { border: 1px solid var(--line); border-radius: 14px; padding: 21px; min-height: 185px; transition: border-color .18s, transform .18s; }
+  .faq-category-card:hover { border-color: var(--coral); transform: translateY(-2px); }
+  .faq-category-card svg { color: var(--green); }
+  .faq-category-card h2 { font-size: 18px; margin-top: 16px; }
+  .faq-category-card p { color: var(--muted); font-size: 13px; margin-top: 9px; line-height: 1.55; }
+  .faq-category-count { display: block; color: var(--muted); font-size: 11px; margin-top: 8px; }
+  .faq-hub-contact { margin-top: 54px; border-top: 1px solid var(--line); padding-top: 42px; }
+  .faq-hub-contact h2 { font-size: 30px; }
+  .faq-hub-contact p { color: var(--muted); margin-top: 10px; }
+  .faq-hub-contact .button { margin-top: 20px; }
+  .breadcrumb { color: var(--green); display: inline-block; font-size: 13px; font-weight: 600; margin-bottom: 38px; text-decoration: underline; text-underline-offset: 4px; }
+  .faq-page .eyebrow { margin-bottom: 15px; }
+  .faq-reviewed { color: var(--muted); font-size: 13px; margin-top: 22px; }
+  .faq-page-list { margin-top: 38px; }
+  .faq-page-list .faq-item { scroll-margin-top: 110px; }
+  .faq-page-list .faq-item > p { font-size: 15px; line-height: 1.8; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   .footer-main { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding-bottom: 37px; }
   .footer-main p { font-size: 13px; line-height: 1.6; }
   .footer-main > div > span { display: block; font-size: 11px; color: var(--muted); line-height: 1.8; }
@@ -441,6 +482,7 @@
     .large-price { font-size: 65px; }
     .price-panel .button { margin-top: 10px; }
     .pricing-card .price-panel > p { max-width: none; }
+    .faq-inline { grid-template-columns: 1fr; gap: 12px; font-size: 13px; }
     .faq-section { grid-template-columns: 1fr; gap: 30px; padding-bottom: 58px; }
     .faq-section .eyebrow { font-size: 9px; }
     .faq-section > div > p:last-child { margin-top: 20px; }
@@ -472,6 +514,10 @@
     .form-result h4 { font-size: 14px; }
     .form-result p { font-size: 12px; }
     .legal-page { padding-block: 58px 45px; }
+    .faq-hub, .faq-page { padding-block: 52px; }
+    .faq-lead { font-size: 16px; }
+    .faq-categories { grid-template-columns: 1fr; }
+    .faq-category-card { min-height: 0; }
     .legal-page h1 { font-size: 42px; }
     .legal-lead { font-size: 17px; }
     .legal-page section { padding-top: 29px; }

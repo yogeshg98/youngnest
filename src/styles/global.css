@@ -171,8 +171,16 @@
   .large-price > span { font-size: 13px; letter-spacing: 0; font-weight: 400; }
   .price-panel .button { width: 100%; margin-top: 16px; }
   .pricing-card .price-panel > p { font-size: 10px !important; text-align: center; margin-top: 12px !important; max-width: 290px; }
-  .faq-inline { grid-column: 1 / -1; margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; font-size: 14px; line-height: 1.65; }
-  .faq-inline a { grid-column: 1 / -1; font-size: 13px; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+  .pricing-facts { margin-top: 32px; border-block: 1px solid var(--line); }
+  .pricing-facts > .eyebrow { margin: 0; padding-block: 20px; }
+  .pricing-facts-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0 0 28px; list-style: none; }
+  .pricing-facts-list li { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 14px; align-content: start; padding-inline: 24px; border-left: 1px solid var(--line); }
+  .pricing-facts-list li:first-child { padding-left: 0; border-left: 0; }
+  .pricing-facts-list li:last-child { padding-right: 0; }
+  .pricing-fact-icon { width: 42px; height: 42px; border-radius: 50%; background: #eaf0e8; color: var(--green); display: flex; align-items: center; justify-content: center; }
+  .pricing-fact-label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 10px; font-weight: 650; line-height: 1.4; text-transform: uppercase; letter-spacing: .1em; }
+  .pricing-facts-list strong { display: block; font-size: 15px; line-height: 1.35; letter-spacing: -.02em; }
+  .pricing-facts-list p { margin-top: 7px; color: var(--muted); font-size: 12px; line-height: 1.65; }
   .faq-section { display: grid; grid-template-columns: 1fr 1.25fr; gap: 70px; padding-bottom: 100px; }
   .faq-section .eyebrow { font-size: 10px; margin-bottom: 17px; }
   .faq-section > div > p:last-child { font-size: 12px; color: var(--muted); margin-top: 25px; }
@@ -382,6 +390,11 @@
     .price-panel { padding-left: 25px; }
     .large-price { font-size: 56px; }
     .price-panel .button { font-size: 12px; gap: 16px; padding-inline: 14px; }
+    .pricing-facts-list { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: 0; }
+    .pricing-facts-list li { padding: 24px; border-top: 1px solid var(--line); }
+    .pricing-facts-list li:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .pricing-facts-list li:nth-child(even) { padding-right: 0; }
+    .pricing-facts-list li:nth-child(-n + 2) { border-top: 0; padding-top: 0; }
     .faq-section { grid-template-columns: 1fr 1.4fr; padding-bottom: 72px; }
     .faq-item summary { font-size: 12px; }
     .faq-section .eyebrow { font-size: 8px; }
@@ -482,7 +495,12 @@
     .large-price { font-size: 65px; }
     .price-panel .button { margin-top: 10px; }
     .pricing-card .price-panel > p { max-width: none; }
-    .faq-inline { grid-template-columns: 1fr; gap: 12px; font-size: 13px; }
+    .pricing-facts { margin-top: 28px; }
+    .pricing-facts > .eyebrow { padding-block: 17px; }
+    .pricing-facts-list { grid-template-columns: 1fr; }
+    .pricing-facts-list li { padding: 20px 0; border-left: 0; border-top: 1px solid var(--line); }
+    .pricing-facts-list li:nth-child(-n + 2) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .pricing-facts-list li:first-child { border-top: 0; padding-top: 0; }
     .faq-section { grid-template-columns: 1fr; gap: 30px; padding-bottom: 58px; }
     .faq-section .eyebrow { font-size: 9px; }
     .faq-section > div > p:last-child { margin-top: 20px; }

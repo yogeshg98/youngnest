@@ -55,6 +55,21 @@ site key, so submission remains disabled as designed. Endpoint tests use mocks;
 SQLite checks do not replace a deployed D1 verification. Phone checks establish
 possible format/length, not ownership or reachability.
 
+## Pricing facts rail — 15 September 2026
+
+- `npm run check` and `npm run build` completed with zero errors or warnings.
+- Local production-build checks at 1440, 1024, 768, 390 and 320px confirmed the
+  facts rail uses four, four, two, one and one columns respectively, with no
+  horizontal overflow and all four facts and both detail links visible.
+- Both detail links reached the intended FAQ answer, which was present, visible
+  and expanded after navigation. No browser console errors were reported.
+- Focused axe checks of the pricing section at 1440 and 390px found no WCAG 2.0
+  A/AA violations.
+- Screenshots: `output/playwright/pricing-facts-*.png`.
+
+Limits: these checks used a local production build in Chrome. No production
+deployment or physical-device testing was performed.
+
 ## FAQ version one — 15 September 2026
 
 - Production `npm run build` passed with zero errors and generated the English FAQ

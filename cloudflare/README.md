@@ -8,7 +8,11 @@ The public Astro site submits to `POST /api/enquiries`. That Pages Function veri
 npx wrangler d1 list
 ```
 
-The production database is named `youngnest-enquiries`. Create a new database only when setting up a separate environment.
+The production database is named `youngnest-enquiries-eu` and is created with
+Cloudflare's `eu` D1 jurisdiction. This guarantees that the database runs and
+stores data within the European Union; D1 does not offer a Germany-specific
+placement guarantee. Create a new database only when setting up a separate
+environment.
 
 ## 2. D1 binding
 
@@ -16,13 +20,13 @@ The Pages project uses the D1 binding:
 
 ```text
 Variable name: ENQUIRIES_DB
-Database: youngnest-enquiries
+Database: youngnest-enquiries-eu
 ```
 
 Apply committed migrations before deploying a change that depends on them:
 
 ```sh
-npx wrangler d1 migrations apply youngnest-enquiries --remote
+npx wrangler d1 migrations apply youngnest-enquiries-eu --remote
 ```
 
 ## 3. Turnstile
@@ -48,7 +52,7 @@ Build with the public site key, deploy the `dist/` directory, then submit an aut
 ```sh
 PUBLIC_TURNSTILE_SITE_KEY=<widget-site-key> npm run build
 npx wrangler pages deploy dist --project-name youngnest
-npx wrangler d1 execute youngnest-enquiries --remote --command="SELECT reference, name, email, status, created_at FROM enquiries ORDER BY created_at DESC LIMIT 10"
+npx wrangler d1 execute youngnest-enquiries-eu --remote --command="SELECT reference, name, email, status, created_at FROM enquiries ORDER BY created_at DESC LIMIT 10"
 ```
 
 The function returns a reference such as `YN-1234ABCD` only after D1 confirms the insert. If D1 or Turnstile is unavailable, the site leaves the visitor's form values in place and shows a direct-contact fallback message.

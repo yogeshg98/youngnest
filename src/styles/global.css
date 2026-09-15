@@ -134,7 +134,8 @@
   .shops-map-label { top: 45%; right: 4%; }
   .cafes-map-label { top: 5%; left: 4%; }
   .train-map-label, .shops-map-label, .cafes-map-label { white-space: normal; max-width: 45%; }
-  .map-label > strong { display: block; font-size: 10px; line-height: 1.5; text-transform: uppercase; letter-spacing: .07em; color: #a83237; margin-bottom: 3px; }
+  .map-label > strong { display: flex; align-items: center; gap: 4px; font-size: 10px; line-height: 1.5; text-transform: uppercase; letter-spacing: .07em; color: #a83237; margin-bottom: 3px; }
+  .map-label > strong svg { flex: 0 0 auto; }
   .map-label > span:not(.little-dot) { display: block; font-size: 12px; line-height: 1.4; font-weight: 600; }
   .map-label > small { display: block; font-size: 10px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
   .map-note { position: absolute; bottom: 10px; left: 15px; font-size: 9px; color: #566356; }
@@ -176,8 +177,9 @@
   .faq-section .eyebrow { font-size: 10px; margin-bottom: 17px; }
   .faq-section > div > p:last-child { font-size: 12px; color: var(--muted); margin-top: 25px; }
   .faq-section .text-link { color: var(--navy); margin-top: 3px; }
+  .faq-section .faq-all-link { margin-top: 18px; }
   .faq-item { border-top: 1px solid var(--line); }
-  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-item:last-of-type { border-bottom: 1px solid var(--line); }
   .faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 23px 0; cursor: pointer; list-style: none; font-size: 13px; font-weight: 550; }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary > span { display: flex; gap: 18px; }
@@ -203,8 +205,6 @@
   .form-heading { display: flex; gap: 15px; justify-content: space-between; align-items: center; }
   .form-heading h3 { font-size: 24px; }
   .form-intro { font-size: 11px; color: var(--muted); margin-top: 13px; margin-bottom: 24px; line-height: 1.8; }
-  .form-faq-note { font-size: 12px; line-height: 1.65; padding: 12px; border: 1px solid #d5d9d2; border-radius: 8px; margin: -8px 0 18px; color: var(--muted); }
-  .form-faq-note a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
   .field { margin-bottom: 17px; display: flex; flex-direction: column; min-width: 0; }
   .field label { display: block; font-size: 10px; font-weight: 600; margin-bottom: 7px; }
@@ -250,7 +250,7 @@
   .faq-hub > h1, .faq-page > h1 { margin-bottom: 20px; }
   .faq-lead { color: var(--muted); font-size: 18px; line-height: 1.75; max-width: 760px; }
   .faq-search { margin-top: 42px; position: relative; }
-  .faq-search label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 9px; }
+  .faq-search label { display: none; }
   .faq-search-input { display: flex; align-items: center; gap: 10px; padding: 0 16px; border: 1px solid var(--line); background: #fffdfa; border-radius: 12px; min-height: 56px; }
   .faq-search-input svg { color: var(--muted); flex: 0 0 auto; }
   .faq-search-input input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--navy); font-size: 16px; }
@@ -272,7 +272,7 @@
   .faq-category-card h2 { font-size: 18px; margin-top: 16px; }
   .faq-category-card p { color: var(--muted); font-size: 13px; margin-top: 9px; line-height: 1.55; }
   .faq-category-count { display: block; color: var(--muted); font-size: 11px; margin-top: 8px; }
-  .faq-hub-contact { margin-top: 54px; border-top: 1px solid var(--line); padding-top: 42px; }
+  .faq-hub-contact { margin-top: 54px; padding-top: 42px; }
   .faq-hub-contact h2 { font-size: 30px; }
   .faq-hub-contact p { color: var(--muted); margin-top: 10px; }
   .faq-hub-contact .button { margin-top: 20px; }

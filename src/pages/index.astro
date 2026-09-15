@@ -86,12 +86,12 @@ const facts = [
               <rect x="384" y="20" width="145" height="66" rx="15" transform="rotate(21 384 20)" fill="#D8DFCD"/><rect x="54" y="33" width="103" height="67" rx="12" transform="rotate(21 54 33)" fill="#D8DFCD"/><rect x="35" y="395" width="120" height="70" rx="12" transform="rotate(-24 35 395)" fill="#D8DFCD"/>
               <g stroke="#75937B" stroke-width="3"><path d="M112 231v29M545 280v29M421 378v25M201 73v29"/></g>
               <g fill="#ACC3A4"><circle cx="112" cy="215" r="24"/><circle cx="99" cy="231" r="18"/><circle cx="125" cy="229" r="20"/><circle cx="545" cy="269" r="25"/><circle cx="421" cy="367" r="22"/><circle cx="201" cy="59" r="23"/></g>
-              <!-- Routes share the road junction, with short entrance paths to each building. -->
-              <path d="M305 254V262L263 246M126 149V193.5L263 246L458 160V180M263 246L108 313.8V338" stroke="#75937B" stroke-width="2" stroke-dasharray="5 7" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- The station route runs directly from the home to the train marker. -->
+              <path d="M305 262L263 246L98 320M126 149V193.5L263 246L458 160V180" stroke="#75937B" stroke-width="2" stroke-dasharray="5 7" stroke-linecap="round" stroke-linejoin="round"/>
               <g transform="translate(244 156)"><ellipse cx="61" cy="95" rx="72" ry="14" fill="#BCC9B5"/><path d="M8 36 61-2l53 38v62H8Z" fill="#FFF9F3"/><path d="M-3 36 61-13l64 49" stroke="#FF5C5C" stroke-width="14" stroke-linejoin="round"/><path d="M48 60h26v38H48Z" fill="#2F5D50"/><path d="M22 48h15v18H22ZM85 48h15v18H85Z" fill="#D1E0D9"/><path d="M22 57h15M85 57h15" stroke="#FFF9F3" stroke-width="2"/></g>
               <g transform="translate(449 118)"><rect width="76" height="62" rx="6" fill="#FFF9F3"/><path d="M-5 15h86L70-4H6Z" fill="#E4BDA7"/><path d="M9 31h19v31H9Z" fill="#A8BCAF"/><path d="M40 29h25v18H40Z" fill="#A8BCAF"/></g>
               <g transform="translate(94 95)"><rect width="65" height="54" rx="5" fill="#FFF9F3"/><path d="M-5 12h75L60-5H5Z" fill="#E4BDA7"/><path d="M22 25h20v12a7 7 0 0 1-7 7h-6a7 7 0 0 1-7-7V25ZM42 27h4a5 5 0 0 1 0 10h-4M27 17v3M35 17v3" stroke="#2F5D50" stroke-width="2" stroke-linecap="round"/></g>
-              <g transform="translate(59 314)"><rect width="49" height="49" rx="13" fill="#2F5D50"/><text x="24" y="34" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#FFF9F3" text-anchor="middle">S</text></g>
+              <g transform="translate(59 318)"><rect width="49" height="49" rx="13" fill="#2F5D50"/><rect x="13" y="10" width="23" height="25" rx="6" fill="none" stroke="#FFF9F3" stroke-width="2.5"/><path d="M14 25h21M19 16h11M19 31h.1M30 31h.1M19 36l-3 4M30 36l3 4" fill="none" stroke="#FFF9F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g>
             </svg>
             <span class="map-label home-map-label">Your new home <span class="little-dot"></span></span>
             <span class="map-label train-map-label"><strong><Icon name="walk" size={13} />{site.location.stationWalk}</strong><span>Ottobrunn S-Bahn</span></span>

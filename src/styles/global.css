@@ -139,14 +139,7 @@
   .map-label > span:not(.little-dot) { display: block; font-size: 12px; line-height: 1.4; font-weight: 600; }
   .map-label > small { display: block; font-size: 10px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
   .map-note { position: absolute; bottom: 10px; left: 15px; font-size: 9px; color: #566356; }
-  .commute-strip { padding: 16px 20px; background: #f6f7f0; border-top: 1px solid #dce1d4; border-bottom: 1px solid #dce1d4; }
-  .commute-strip > div { display: flex; align-items: flex-start; gap: 10px; }
-  .commute-strip svg { color: var(--green); flex-shrink: 0; margin-top: 4px; }
-  .commute-strip p { min-width: 0; }
-  .commute-strip strong { display: block; font-size: 10px; color: #a83237; letter-spacing: .03em; margin-bottom: 4px; }
-  .commute-strip p > span { display: block; font-size: 13px; font-weight: 600; line-height: 1.45; }
-  .commute-strip small { display: block; font-size: 10px; color: var(--muted); margin-top: 5px; line-height: 1.6; }
-  .address-card { background: #fffdfa; padding: 22px; display: flex; align-items: center; gap: 13px; }
+  .address-card { background: #fffdfa; border-top: 1px solid #dce1d4; padding: 22px; display: flex; align-items: center; gap: 13px; }
   .address-card > div { flex: 1; }
   .address-card strong, .address-card span:not(.round-icon) { display: block; }
   .address-card strong { font-size: 14px; font-weight: 600; }
@@ -640,10 +633,6 @@
     .contact-options a > svg:last-child { display: none; }
   }
   @media (max-width: 1000px) and (min-width: 761px), (max-width: 430px) {
-    .commute-strip { padding: 16px 12px; gap: 12px; }
-    .commute-strip > div { gap: 0; }
-    .commute-strip svg { display: none; }
-    .commute-strip p > span { font-size: 12px; }
     .map-label > strong { font-size: 8px; }
     .map-label > span:not(.little-dot) { font-size: 10px; }
     .map-label > small { font-size: 8px; }

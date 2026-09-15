@@ -2,9 +2,9 @@ export const site = {
   origin: 'https://youngnest.pages.dev',
   faqReviewed: '15 September 2026',
   location: {
-    stationWalk: '3 minutes walk',
-    shopsWalk: '3 minutes walk',
-    cafesWalk: '5 minutes walk',
-    marienplatz: '~ 20 minutes by S-Bahn',
+    stationWalk: '3 min walk',
+    shopsWalk: '3 min walk',
+    cafesWalk: '5 min walk',
+    marienplatz: '~ 20 min by S-Bahn',
   },
 } as const;

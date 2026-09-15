@@ -94,13 +94,10 @@ const facts = [
               <g transform="translate(59 318)"><rect width="49" height="49" rx="13" fill="#2F5D50"/><rect x="13" y="10" width="23" height="25" rx="6" fill="none" stroke="#FFF9F3" stroke-width="2.5"/><path d="M14 25h21M19 16h11M19 31h.1M30 31h.1M19 36l-3 4M30 36l3 4" fill="none" stroke="#FFF9F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g>
             </svg>
             <span class="map-label home-map-label">Your new home <span class="little-dot"></span></span>
-            <span class="map-label train-map-label"><strong><Icon name="walk" size={13} />{site.location.stationWalk}</strong><span>Ottobrunn S-Bahn</span></span>
+            <span class="map-label train-map-label"><strong><Icon name="walk" size={13} />{site.location.stationWalk}</strong><span>Ottobrunn S-Bahn</span><small>~20 min to Munich city centre (Marienplatz)</small></span>
             <span class="map-label shops-map-label"><strong><Icon name="walk" size={13} />{site.location.shopsWalk}</strong><span>EDEKA · PENNY</span><small>Everyday essentials</small></span>
             <span class="map-label cafes-map-label"><strong><Icon name="walk" size={13} />{site.location.cafesWalk}</strong><span>Cafés &amp; restaurants</span></span>
-            <span class="map-note">Illustration · walking times approximate</span>
-          </div>
-          <div class="commute-strip" aria-label="Connections from Ottobrunn station">
-            <div><Icon name="train" size={20} /><p><strong>{site.location.marienplatz}</strong><span>Munich city centre</span><small>Marienplatz · from Ottobrunn station</small></p></div>
+            <span class="map-note">Illustration · Walking times approximate</span>
           </div>
           <div class="address-card"><span class="round-icon"><Icon name="pin" /></span><div><strong>{property.address}</strong><span>{property.locality}</span></div><a href={property.directions} target="_blank" rel="noopener noreferrer" class="icon-button" aria-label="Open property address in Google Maps"><Icon name="diagonal" /></a></div>
         </div>

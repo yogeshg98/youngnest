@@ -171,7 +171,7 @@
   .large-price > span { font-size: 13px; letter-spacing: 0; font-weight: 400; }
   .price-panel .button { width: 100%; margin-top: 16px; }
   .pricing-card .price-panel > p { font-size: 10px !important; text-align: center; margin-top: 12px !important; max-width: 290px; }
-  .faq-inline { grid-column: 1 / -1; border-top: 1px solid #d8bfb5; padding-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; font-size: 14px; line-height: 1.65; }
+  .faq-inline { grid-column: 1 / -1; margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; font-size: 14px; line-height: 1.65; }
   .faq-inline a { grid-column: 1 / -1; font-size: 13px; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
   .faq-section { display: grid; grid-template-columns: 1fr 1.25fr; gap: 70px; padding-bottom: 100px; }
   .faq-section .eyebrow { font-size: 10px; margin-bottom: 17px; }
